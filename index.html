@@ -450,7 +450,59 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
   .reveal,.stagger>*,.hero h1 .ln,.hero p.sub,.hero .cta-row,.hero-badge,.scroll-cue{opacity:1!important;transform:none!important}
   #glow{display:none}
   .blob{animation:none!important}
+  .pmodal-backdrop,.pmodal-card{transition:none!important}
+  .pmodal-card{transform:none!important}
 }
+
+/* ===== clickable project cards + apartment modal ===== */
+.proj{cursor:pointer}
+.proj:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+.proj-cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.75rem;font-size:.82rem;font-weight:600;color:#fff;opacity:.95}
+.proj-cta .a{transition:transform .35s var(--ease)}
+.proj:hover .proj-cta .a{transform:translateX(6px)}
+
+.pmodal{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:1.2rem}
+.pmodal.open{display:flex}
+.pmodal-backdrop{position:absolute;inset:0;background:rgba(33,24,22,.55);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);opacity:0;transition:opacity .4s var(--ease)}
+.pmodal.open .pmodal-backdrop{opacity:1}
+.pmodal-card{position:relative;z-index:1;width:100%;max-width:720px;max-height:90vh;overflow:auto;border-radius:24px;background:var(--ivory);box-shadow:var(--shadow);opacity:0;transform:translateY(26px) scale(.98);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.pmodal.open .pmodal-card{opacity:1;transform:none}
+.pmodal-card::-webkit-scrollbar{width:8px}
+.pmodal-card::-webkit-scrollbar-thumb{background:var(--rose);border-radius:8px}
+.pmodal-x{position:absolute;top:1rem;right:1rem;z-index:3;width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.88);color:var(--ink);font-size:1.4rem;line-height:1;display:grid;place-items:center;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),background .25s}
+.pmodal-x:hover{transform:rotate(90deg);background:#fff}
+.pmodal-media{position:relative;height:230px;overflow:hidden}
+.pmodal-media img{width:100%;height:100%;object-fit:cover}
+.pmodal-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(33,24,22,.5))}
+.pmodal-status{position:absolute;left:1.3rem;bottom:1.2rem;z-index:2;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.36rem .8rem;border-radius:100px;color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+.pmodal-status.done{background:rgba(124,145,128,.82)}
+.pmodal-status.building{background:rgba(198,140,113,.85)}
+.pmodal-status.planned{background:rgba(168,183,191,.85)}
+.pmodal-body{padding:1.8rem clamp(1.3rem,4vw,2.2rem) 2.1rem}
+.pmodal-loc{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-deep);font-weight:600}
+.pmodal-title{font-size:clamp(2rem,4vw,2.8rem);line-height:1.04;margin:.3rem 0 .65rem}
+.pmodal-desc{color:var(--ink-soft);font-size:.95rem;line-height:1.72}
+.pm-label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin:1.7rem 0 .9rem;display:flex;align-items:center;gap:.8rem}
+.pm-label::after{content:'';flex:1;height:1px;background:var(--line)}
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.type-card{position:relative;text-align:left;border:1px solid var(--line-2);border-radius:16px;padding:1rem 1.1rem;background:rgba(255,255,255,.55);cursor:pointer;font-family:inherit;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s,background .3s}
+.type-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:var(--rose)}
+.type-card.sel{border-color:var(--rose-deep);background:linear-gradient(160deg,rgba(217,182,174,.24),rgba(255,255,255,.55));box-shadow:0 0 0 3px rgba(185,138,128,.18)}
+.tc-top{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.tc-t{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;line-height:1;color:var(--ink)}
+.tc-av{font-size:.6rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+.tc-av.yes{color:var(--sage-deep);background:rgba(124,145,128,.16)}
+.tc-av.no{color:var(--ink-faint);background:rgba(154,143,131,.16)}
+.tc-s{font-size:.82rem;color:var(--ink-soft);margin-top:.55rem}
+.tc-p{font-size:.95rem;font-weight:600;color:var(--rose-deep);margin-top:.15rem}
+.tc-check{position:absolute;top:.7rem;right:.7rem;width:20px;height:20px;border-radius:50%;background:var(--rose-deep);color:#fff;display:none;place-items:center;font-size:.7rem}
+.type-card.sel .tc-check{display:grid}
+.amen-list{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem}
+.amen-list li{font-size:.84rem;color:var(--ink);background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:100px;padding:.4rem .9rem;display:flex;align-items:center;gap:.45rem}
+.amen-list li::before{content:'✓';color:var(--sage-deep);font-weight:700}
+.modal-cta{width:100%;justify-content:center;margin-top:1.9rem}
+body.pm-open{overflow:hidden}
+@media(max-width:560px){.type-grid{grid-template-columns:1fr}.pmodal-media{height:175px}}
 </style>
 </head>
 <body>
@@ -591,7 +643,7 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
     </div>
 
     <div class="proj-grid stagger reveal">
-      <article class="proj">
+      <article class="proj" data-proj="velania-ii" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Shiko banesat — Rezidenca Velania II">
         <div class="ph"><img src="images/dulon-02.jpg" alt="Rezidenca Velania II — fasadë moderne me ballkone" loading="lazy" /></div>
         <span class="status building">Në ndërtim</span>
         <div class="meta">
@@ -599,10 +651,11 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
           <h3>Rezidenca Velania II</h3>
           <div class="facts"><span><b>56</b> apartamente</span><span><b>10</b> kate</span><span>2024–2026</span></div>
           <div class="price">nga <span>95.000 €</span></div>
+          <span class="proj-cta">Shiko banesat <span class="a">→</span></span>
         </div>
       </article>
 
-      <article class="proj">
+      <article class="proj" data-proj="panorama" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Shiko banesat — Panorama Residence">
         <div class="ph"><img src="images/dulon-11.jpg" alt="Panorama Residence — apartamente premium me pamje panoramike" loading="lazy" /></div>
         <span class="status building">Në ndërtim</span>
         <div class="meta">
@@ -610,10 +663,11 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
           <h3>Panorama Residence</h3>
           <div class="facts"><span><b>35</b> apartamente</span><span><b>8</b> kate</span><span>2024–2025</span></div>
           <div class="price">nga <span>165.000 €</span></div>
+          <span class="proj-cta">Shiko banesat <span class="a">→</span></span>
         </div>
       </article>
 
-      <article class="proj">
+      <article class="proj" data-proj="tower" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Shiko detajet — Prishtina e Re Tower">
         <div class="ph"><img src="images/dulon-03.jpg" alt="Prishtina e Re Tower — kullë rezidenciale ikonike në muzg" loading="lazy" /></div>
         <span class="status done">E përfunduar</span>
         <div class="meta">
@@ -621,10 +675,11 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
           <h3>Prishtina e Re Tower</h3>
           <div class="facts"><span><b>64</b> apartamente</span><span><b>12</b> kate</span><span>2021</span></div>
           <div class="price">e shitur plotësisht</div>
+          <span class="proj-cta">Shiko detajet <span class="a">→</span></span>
         </div>
       </article>
 
-      <article class="proj">
+      <article class="proj" data-proj="gardens" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Shiko banesat — Velania Gardens">
         <div class="ph"><img src="images/dulon-12.jpg" alt="Velania Gardens — projekt familjar me ambient të gjelbërt" loading="lazy" /></div>
         <span class="status planned">Në planifikim</span>
         <div class="meta">
@@ -632,6 +687,7 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
           <h3>Velania Gardens</h3>
           <div class="facts"><span><b>38</b> apartamente</span><span><b>3.000 m²</b> gjelbërim</span><span>2026–2028</span></div>
           <div class="price">regjistrimet të hapura</div>
+          <span class="proj-cta">Shiko banesat <span class="a">→</span></span>
         </div>
       </article>
     </div>
@@ -790,6 +846,28 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
   </div>
 </footer>
 
+<!-- ============ APARTMENT MODAL ============ -->
+<div class="pmodal" id="projModal" aria-hidden="true">
+  <div class="pmodal-backdrop" data-close></div>
+  <div class="pmodal-card" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <button class="pmodal-x" data-close aria-label="Mbyll dritaren">&times;</button>
+    <div class="pmodal-media">
+      <img id="pmImg" src="" alt="" />
+      <span class="pmodal-status" id="pmStatus"></span>
+    </div>
+    <div class="pmodal-body">
+      <div class="pmodal-loc" id="pmLoc"></div>
+      <h3 class="pmodal-title serif" id="pmTitle"></h3>
+      <p class="pmodal-desc" id="pmDesc"></p>
+      <div class="pm-label">Zgjidh tipin e banesës</div>
+      <div class="type-grid" id="pmTypes"></div>
+      <div class="pm-label">Komoditetet</div>
+      <ul class="amen-list" id="pmAmen"></ul>
+      <button class="btn btn-primary modal-cta" id="pmInterest" type="button">Më intereson kjo banesë <span class="arr">→</span></button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -899,6 +977,89 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
     note.style.color='var(--sage-deep)';
     note.textContent='Faleminderit! Mesazhi u dërgua — do t’ju kontaktojmë së shpejti.';
     form.reset();
+  });
+})();
+</script>
+
+<script>
+/* ---- apartment modal for residence cards ---- */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DATA = {
+    'velania-ii':{name:'Rezidenca Velania II',loc:'Velania, Prishtinë',status:'Në ndërtim',cls:'building',img:'images/dulon-02.jpg',
+      desc:'Vazhdimi i projektit të suksesshëm Velania I — 56 apartamente premium në 10 kate, me teknologji Smart Home, fasadë të modernizuar dhe ballkone të gjera me pamje drejt qytetit. Dorëzimi: gjysma e parë e vitit 2026.',
+      types:[{t:'1+1',s:'55–68 m²',p:'nga 95.000 €',av:1},{t:'2+1',s:'82–98 m²',p:'nga 145.000 €',av:1},{t:'3+1',s:'115–135 m²',p:'nga 195.000 €',av:1},{t:'Penthouse',s:'185–220 m²',p:'nga 350.000 €',av:1}],
+      amen:['Parking nëntokësor 2-katësh','Sallë fitnesi & SPA','Pishinë e jashtme','Smart Home','Portieri 24/7']},
+    'panorama':{name:'Panorama Residence',loc:'Prishtina e Re',status:'Në ndërtim',cls:'building',img:'images/dulon-11.jpg',
+      desc:'Projekti ynë më ekskluziv premium — vetëm 35 apartamente me pamje panoramike 270°, dysheme mermeri italiane dhe pajisje gjermane. Dorëzimi: Dhjetor 2025. Kanë mbetur vetëm pak njësi.',
+      types:[{t:'2+1',s:'90–108 m²',p:'nga 165.000 €',av:1},{t:'3+1',s:'125–148 m²',p:'nga 230.000 €',av:1},{t:'Penthouse',s:'210–280 m²',p:'nga 420.000 €',av:1}],
+      amen:['Concierge service','Terrasa private panoramike','Parking premium','SPA & pishinë','Smart Home']},
+    'tower':{name:'Prishtina e Re Tower',loc:'Prishtina e Re',status:'E përfunduar',cls:'done',img:'images/dulon-03.jpg',
+      desc:'Kulla jonë ikonike — 12 kate, 64 apartamente, e përfunduar në 2021 dhe e shitur plotësisht. E paraqitur këtu si referencë e standardit tonë. Pyetni për projekte të ngjashme në ndërtim.',
+      types:[{t:'1+1',s:'48–60 m²',p:'85.000 €',av:0},{t:'2+1',s:'75–90 m²',p:'135.000 €',av:0},{t:'3+1',s:'105–125 m²',p:'185.000 €',av:0},{t:'Penthouse',s:'200–240 m²',p:'380.000 €',av:0}],
+      amen:['Parking nëntokësor','Lobby elegant','Sallë fitnesi','Smart Home','Ashensor panoramik']},
+    'gardens':{name:'Velania Gardens',loc:'Velania, Prishtinë',status:'Në planifikim',cls:'planned',img:'images/dulon-12.jpg',
+      desc:'Koncept urban-natyror për familjet — 38 apartamente dhe mbi 3.000 m² gjelbërim, kopshte të brendshme dhe zona lojërash të mbrojtura. Aktualisht në fazë projektimi — regjistrohu për qasje prioritare kur të hapen shitjet.',
+      types:[{t:'2+1',s:'85–100 m²',p:'Me kërkesë',av:1},{t:'3+1',s:'118–138 m²',p:'Me kërkesë',av:1},{t:'4+1',s:'158–180 m²',p:'Me kërkesë',av:1}],
+      amen:['Kopsht i madh privat','Ambient i gjelbërt 3.000 m²','Zona lojërash','Parking','Pishinë e jashtme']}
+  };
+
+  var modal=document.getElementById('projModal');
+  if(!modal) return;
+  var elImg=document.getElementById('pmImg'),elStatus=document.getElementById('pmStatus'),elLoc=document.getElementById('pmLoc'),
+      elTitle=document.getElementById('pmTitle'),elDesc=document.getElementById('pmDesc'),elTypes=document.getElementById('pmTypes'),
+      elAmen=document.getElementById('pmAmen'),elInterest=document.getElementById('pmInterest');
+  var current=null,selType=null,lastFocus=null;
+
+  function open(id){
+    var p=DATA[id]; if(!p) return;
+    current=p; selType=null;
+    elImg.src=p.img; elImg.alt=p.name;
+    elStatus.textContent=p.status; elStatus.className='pmodal-status '+p.cls;
+    elLoc.textContent=p.loc; elTitle.textContent=p.name; elDesc.textContent=p.desc;
+    elTypes.innerHTML='';
+    p.types.forEach(function(ty){
+      var b=document.createElement('button'); b.type='button'; b.className='type-card';
+      b.innerHTML='<span class="tc-check">✓</span><div class="tc-top"><span class="tc-t">'+ty.t+'</span><span class="tc-av '+(ty.av?'yes':'no')+'">'+(ty.av?'E lirë':'E shitur')+'</span></div><div class="tc-s">'+ty.s+'</div><div class="tc-p">'+ty.p+'</div>';
+      b.addEventListener('click',function(){
+        var was=b.classList.contains('sel');
+        Array.prototype.forEach.call(elTypes.children,function(c){c.classList.remove('sel');});
+        if(was){selType=null;}else{b.classList.add('sel');selType=ty;}
+      });
+      elTypes.appendChild(b);
+    });
+    elAmen.innerHTML='';
+    p.amen.forEach(function(a){var li=document.createElement('li');li.textContent=a;elAmen.appendChild(li);});
+    lastFocus=document.activeElement;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('pm-open');
+    modal.querySelector('.pmodal-card').scrollTop=0;
+    setTimeout(function(){var x=modal.querySelector('.pmodal-x'); if(x) x.focus();},40);
+  }
+  function close(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('pm-open');
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.proj[data-proj]'),function(card){
+    card.addEventListener('click',function(){open(card.getAttribute('data-proj'));});
+    card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(card.getAttribute('data-proj'));}});
+  });
+  Array.prototype.forEach.call(modal.querySelectorAll('[data-close]'),function(el){el.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close();});
+
+  elInterest.addEventListener('click',function(){
+    var msgEl=document.getElementById('msg');
+    if(msgEl&&current){
+      msgEl.value = selType
+        ? 'Përshëndetje! Jam i interesuar për një banesë '+selType.t+' (~'+selType.s+', '+selType.p+') te '+current.name+'. Ju lutem më kontaktoni me detaje.'
+        : 'Përshëndetje! Jam i interesuar për apartamentet te '+current.name+'. Ju lutem më kontaktoni me detaje.';
+    }
+    close();
+    var c=document.getElementById('contact'); if(c) c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    setTimeout(function(){var n=document.getElementById('name'); if(n) n.focus();}, reduce?0:520);
   });
 })();
 </script>
