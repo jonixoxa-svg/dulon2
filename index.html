@@ -6,7 +6,7 @@
 <title>Dulon — Rehatia që e meritoni · Zhvillim rezidencial në Prishtinë</title>
 <meta name="description" content="Dulon Group Sh.p.k — zhvillues rezidencial premium në Prishtinë. Hapësira moderne, të menduara me kujdes dhe të ndërtuara për të zgjatur. Që nga viti 2022." />
 <meta name="theme-color" content="#FBF9F4" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23B98A80'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23FBF9F4' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23B8902F'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' fill='%23FBF9F4' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -138,12 +138,8 @@ nav:not(.scrolled) .nav-cta:hover{background:#fff;color:var(--ink);border-color:
 nav:not(.scrolled) .nav-toggle{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.12)}
 nav:not(.scrolled) .nav-toggle span{background:#fff}
 .brand{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:1.05rem;letter-spacing:.02em}
-.brand .mark{
-  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
-  background:linear-gradient(140deg,var(--rose-deep),var(--clay));color:var(--ivory);
-  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;line-height:1;
-  box-shadow:0 8px 22px -10px rgba(185,138,128,.9);
-}
+.brand-mark{width:36px;height:36px;flex-shrink:0;display:block}
+.foot-brand .brand-mark{filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
 .brand b{font-weight:700;letter-spacing:.16em;font-size:1.02rem}
 .brand small{display:block;font-size:.56rem;letter-spacing:.32em;color:var(--ink-faint);font-weight:600;margin-top:1px}
 
@@ -330,7 +326,7 @@ body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-6.6px) rotate
 .proj .meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.5rem 1.6rem;color:#fff}
 .proj .meta .loc{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
 .proj .meta h3{font-size:2rem;line-height:1.05;margin:.25rem 0 .55rem;color:#fff}
-.proj .meta .facts{display:flex;gap:1.3rem;font-size:.82rem;opacity:.92}
+.proj .meta .facts{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;font-size:.82rem;opacity:.92}
 .proj .meta .facts b{font-weight:600}
 .proj .price{margin-top:.7rem;font-size:.86rem;opacity:.95}
 .proj .price span{color:#fff;font-weight:600}
@@ -440,6 +436,14 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
   .foot-top{grid-template-columns:1fr}
   .float-chip{left:0}
   .cta-row .btn{flex:1;justify-content:center}
+  .proj .ph{aspect-ratio:4/3}
+  .proj .ph::after{background:linear-gradient(180deg,transparent 26%,rgba(33,24,22,.74))}
+  .proj .meta{padding:1.3rem 1.25rem}
+  .proj .meta h3{font-size:1.85rem;margin:.2rem 0 .55rem}
+  .proj .meta .facts{gap:.3rem .85rem;font-size:.77rem}
+  .pmodal{padding:.7rem}
+  .pmodal-title{font-size:1.95rem}
+  .pmodal-media{height:170px}
 }
 
 /* ============================================================
@@ -513,7 +517,7 @@ body.pm-open{overflow:hidden}
 <!-- ============ NAV ============ -->
 <nav id="nav">
   <a class="brand" href="#home" aria-label="Dulon — ballina">
-    <span class="mark">D</span>
+    <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="dulonGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8CE86"/><stop offset=".55" stop-color="#C29A38"/><stop offset="1" stop-color="#90701C"/></linearGradient></defs><g fill="url(#dulonGold)"><rect x="5.5" y="18" width="6.3" height="16.5" rx="1.4"/><rect x="16.85" y="8.5" width="6.3" height="26" rx="1.4"/><rect x="28.2" y="13.5" width="6.3" height="21" rx="1.4"/></g></svg>
     <span><b>DULON</b><small>RESIDENCE</small></span>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -680,7 +684,7 @@ body.pm-open{overflow:hidden}
       </article>
 
       <article class="proj" data-proj="gardens" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Shiko banesat — Velania Gardens">
-        <div class="ph"><img src="images/dulon-12.jpg" alt="Velania Gardens — projekt familjar me ambient të gjelbërt" loading="lazy" /></div>
+        <div class="ph"><img src="images/dulon-02.jpg" alt="Velania Gardens — kompleks rezidencial familjar në Velania" loading="lazy" /></div>
         <span class="status planned">Në planifikim</span>
         <div class="meta">
           <div class="loc">Velania, Prishtinë</div>
@@ -809,7 +813,7 @@ body.pm-open{overflow:hidden}
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="brand"><span class="mark">D</span><span><b>DULON</b><small>RESIDENCE</small></span></div>
+        <div class="brand"><svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="dulonGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8CE86"/><stop offset=".55" stop-color="#C29A38"/><stop offset="1" stop-color="#90701C"/></linearGradient></defs><g fill="url(#dulonGold)"><rect x="5.5" y="18" width="6.3" height="16.5" rx="1.4"/><rect x="16.85" y="8.5" width="6.3" height="26" rx="1.4"/><rect x="28.2" y="13.5" width="6.3" height="21" rx="1.4"/></g></svg><span><b>DULON</b><small>RESIDENCE</small></span></div>
         <p>Zhvillues rezidencial në Prishtinë. Hapësira moderne, të menduara me kujdes dhe të ndërtuara për të zgjatur.</p>
         <div class="foot-tag">Rehatia që e meritoni.</div>
       </div>
@@ -999,7 +1003,7 @@ body.pm-open{overflow:hidden}
       desc:'Kulla jonë ikonike — 12 kate, 64 apartamente, e përfunduar në 2021 dhe e shitur plotësisht. E paraqitur këtu si referencë e standardit tonë. Pyetni për projekte të ngjashme në ndërtim.',
       types:[{t:'1+1',s:'48–60 m²',p:'85.000 €',av:0},{t:'2+1',s:'75–90 m²',p:'135.000 €',av:0},{t:'3+1',s:'105–125 m²',p:'185.000 €',av:0},{t:'Penthouse',s:'200–240 m²',p:'380.000 €',av:0}],
       amen:['Parking nëntokësor','Lobby elegant','Sallë fitnesi','Smart Home','Ashensor panoramik']},
-    'gardens':{name:'Velania Gardens',loc:'Velania, Prishtinë',status:'Në planifikim',cls:'planned',img:'images/dulon-12.jpg',
+    'gardens':{name:'Velania Gardens',loc:'Velania, Prishtinë',status:'Në planifikim',cls:'planned',img:'images/dulon-02.jpg',
       desc:'Koncept urban-natyror për familjet — 38 apartamente dhe mbi 3.000 m² gjelbërim, kopshte të brendshme dhe zona lojërash të mbrojtura. Aktualisht në fazë projektimi — regjistrohu për qasje prioritare kur të hapen shitjet.',
       types:[{t:'2+1',s:'85–100 m²',p:'Me kërkesë',av:1},{t:'3+1',s:'118–138 m²',p:'Me kërkesë',av:1},{t:'4+1',s:'158–180 m²',p:'Me kërkesë',av:1}],
       amen:['Kopsht i madh privat','Ambient i gjelbërt 3.000 m²','Zona lojërash','Parking','Pishinë e jashtme']}
