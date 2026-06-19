@@ -4,7 +4,7 @@
 # (Publish Directory ".", Build Command empty).
 services:
   - type: web
-    name: dulon2
+    name: dulon-residence
     runtime: static
     buildCommand: "echo 'static site — no build needed'"
     staticPublishPath: .
