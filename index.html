@@ -919,6 +919,19 @@ section[id],header[id]{scroll-margin-top:72px}
   "use strict";
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- always open at the top (no browser scroll restoration) ---- */
+  if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+  function toTop(){
+    if(location.hash) return;
+    var h = document.documentElement, prev = h.style.scrollBehavior;
+    h.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    h.style.scrollBehavior = prev;
+  }
+  toTop();
+  window.addEventListener('load', toTop);
+  window.addEventListener('pageshow', toTop);
+
   /* ---- year ---- */
   document.getElementById('year').textContent = new Date().getFullYear();
 
