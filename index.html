@@ -507,6 +507,42 @@ footer{background:var(--ink);color:var(--cream);padding:4.5rem 0 2.2rem}
 .modal-cta{width:100%;justify-content:center;margin-top:1.9rem}
 body.pm-open{overflow:hidden}
 @media(max-width:560px){.type-grid{grid-template-columns:1fr}.pmodal-media{height:175px}}
+
+/* ===== mobile enticement ===== */
+section[id],header[id]{scroll-margin-top:72px}
+@media(max-width:760px){
+  .section{padding:clamp(3.4rem,9vw,5rem) 0}
+  .h2{font-size:clamp(2rem,7.6vw,2.8rem)}
+  .lead{font-size:1rem}
+  .btn{padding:1rem 1.7rem}
+}
+@media(max-width:640px){
+  .hero{min-height:90svh;padding:5.5rem 0 3rem}
+  .hero h1{font-size:clamp(2.7rem,11.5vw,3.7rem);max-width:13ch}
+  .hero p.sub{font-size:1rem;margin-top:1.3rem}
+  .hero .cta-row{flex-direction:column;align-items:stretch;gap:.7rem;margin-top:2rem}
+  .hero .cta-row .btn{flex:0 0 auto;width:100%;justify-content:center;height:54px}
+  .scroll-cue{display:none}
+  .about-copy .sign{font-size:1.5rem}
+  .card{padding:1.75rem 1.45rem}
+  .proj-cta{font-size:.92rem;margin-top:.9rem}
+}
+/* mobile sticky action bar */
+.mbar{display:none}
+@media(max-width:860px){
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:1300;display:flex;gap:.55rem;
+    padding:.65rem .8rem calc(.7rem + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,rgba(251,249,244,0),rgba(251,249,244,.95) 40%);
+    transform:translateY(135%);transition:transform .45s var(--ease);pointer-events:none}
+  .mbar.show{transform:none;pointer-events:auto}
+  .mbar a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:52px;
+    border-radius:100px;font-weight:600;font-size:.96rem;text-decoration:none}
+  .mbar .mbar-call{background:#fff;color:var(--ink);border:1px solid var(--line-2);box-shadow:var(--shadow-sm)}
+  .mbar .mbar-cta{background:linear-gradient(135deg,var(--rose-deep),var(--clay));color:#fff;box-shadow:0 12px 26px -12px rgba(185,138,128,.95)}
+  .mbar svg{width:18px;height:18px}
+  body.menu-open .nav-links a{font-size:1.18rem;padding:1.05rem 0}
+}
+@media(prefers-reduced-motion:reduce){.mbar{transition:none!important}}
 </style>
 </head>
 <body>
@@ -850,6 +886,12 @@ body.pm-open{overflow:hidden}
   </div>
 </footer>
 
+<!-- mobile sticky action bar -->
+<div class="mbar" id="mbar" aria-hidden="true">
+  <a href="tel:+38348203030" class="mbar-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>Telefono</a>
+  <a href="#contact" class="mbar-cta">Cakto një takim</a>
+</div>
+
 <!-- ============ APARTMENT MODAL ============ -->
 <div class="pmodal" id="projModal" aria-hidden="true">
   <div class="pmodal-backdrop" data-close></div>
@@ -1065,6 +1107,26 @@ body.pm-open{overflow:hidden}
     var c=document.getElementById('contact'); if(c) c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
     setTimeout(function(){var n=document.getElementById('name'); if(n) n.focus();}, reduce?0:520);
   });
+})();
+</script>
+
+<script>
+/* ---- mobile sticky action bar: show after hero, hide near contact ---- */
+(function(){
+  var mbar=document.getElementById('mbar'); if(!mbar) return;
+  var contact=document.getElementById('contact');
+  var ticking=false;
+  function upd(){
+    var y=window.scrollY||0;
+    var past=y>window.innerHeight*0.55;
+    var nearContact=contact&&contact.getBoundingClientRect().top<window.innerHeight*0.85;
+    mbar.classList.toggle('show', past&&!nearContact);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(upd);ticking=true;}},{passive:true});
+  window.addEventListener('resize',upd,{passive:true});
+  upd();
+  mbar.addEventListener('click',function(e){ if(e.target.closest('.mbar-cta')) mbar.classList.remove('show'); });
 })();
 </script>
 </body>
